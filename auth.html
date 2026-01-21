@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirish va Ro'yxatdan O'tish - BUKHARA REST</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 20px;
+        }
+
+        .auth-box {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 450px;
+            overflow: hidden;
+        }
+
+        .auth-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .auth-header h1 {
+            margin: 0;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .auth-tabs {
+            display: flex;
+            border-bottom: 1px solid #eee;
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 15px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--gray);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .auth-tab:hover {
+            background: #f8f9fa;
+        }
+
+        .auth-tab.active {
+            color: var(--primary);
+        }
+
+        .auth-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .auth-content {
+            padding: 30px;
+            display: none;
+        }
+
+        .auth-content.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 5px rgba(212, 165, 116, 0.3);
+        }
+
+        .btn-block {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-block:hover {
+            background: #c4924a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 165, 116, 0.3);
+        }
+
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #999;
+        }
+
+        .auth-divider::before,
+        .auth-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #ddd;
+        }
+
+        .auth-divider span {
+            padding: 0 10px;
+            font-size: 14px;
+        }
+
+        .social-login-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .social-login-btn:hover {
+            background: #f8f9fa;
+            border-color: var(--primary);
+        }
+
+        .phone-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .phone-modal.active {
+            display: flex;
+        }
+
+        .phone-modal-content {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        .phone-modal-message {
+            text-align: center;
+            margin: 15px 0;
+            color: #28a745;
+            display: none;
+        }
+
+        #verificationCodeInput {
+            display: none;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-center a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .text-center a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .back-link:hover {
+            color: #c4924a;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="auth-header">
+                <h1>🏰 BUKHARA REST</h1>
+                <p>Foydalanuvchi Akkaunt</p>
+            </div>
+
+            <!-- Tabs -->
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="loginTab" onclick="switchTab('login')">
+                    <i class="fas fa-sign-in-alt"></i> Kirish
+                </button>
+                <button class="auth-tab" id="registerTab" onclick="switchTab('register')">
+                    <i class="fas fa-user-plus"></i> Ro'yxatdan O'tish
+                </button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="loginForm" class="auth-content active">
+                <form id="emailLoginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">
+                            <i class="fas fa-envelope"></i> Email
+                        </label>
+                        <input type="email" id="loginEmail" placeholder="email@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loginPassword">
+                            <i class="fas fa-lock"></i> Parol
+                        </label>
+                        <input type="password" id="loginPassword" placeholder="Parol" required>
+                    </div>
+
+                    <button type="submit" class="btn-block">
+                        <i class="fas fa-sign-in-alt"></i> Kirish
+                    </button>
+                </form>
+
+                <div class="auth-divider">
+                    <span>yoki</span>
+                </div>
+
+                <!-- Social Login -->
+                <button class="social-login-btn" id="googleLoginBtn">
+                    <i class="fab fa-google"></i> Google orqali
+                </button>
+
+                <button class="social-login-btn" id="phoneLoginBtn">
+                    <i class="fas fa-phone"></i> Telefon orqali
+                </button>
+
+                <p class="text-center" style="margin-top: 20px; font-size: 14px;">
+                    Akauntingiz yo'qmi? <a href="#" onclick="switchTab('register'); return false;">Ro'yxatdan o'ting</a>
+                </p>
+            </div>
+
+            <!-- Register Form -->
+            <div id="registerForm" class="auth-content">
+                <form id="emailRegisterForm">
+                    <div class="form-group">
+                        <label for="registerName">
+                            <i class="fas fa-user"></i> Ism Familiya
+                        </label>
+                        <input type="text" id="registerName" placeholder="Ism Familiya" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registerEmail">
+                            <i class="fas fa-envelope"></i> Email
+                        </label>
+                        <input type="email" id="registerEmail" placeholder="email@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registerPhone">
+                            <i class="fas fa-phone"></i> Telefon Raqam
+                        </label>
+                        <input type="tel" id="registerPhone" placeholder="+998 XX XXX-XX-XX" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registerPassword">
+                            <i class="fas fa-lock"></i> Parol
+                        </label>
+                        <input type="password" id="registerPassword" placeholder="Parol (min. 6 ta belgisi)" required>
+                    </div>
+
+                    <button type="submit" class="btn-block">
+                        <i class="fas fa-user-plus"></i> Ro'yxatdan O'tish
+                    </button>
+                </form>
+
+                <p class="text-center" style="margin-top: 20px; font-size: 14px;">
+                    Allaqachon akauntingiz bor? <a href="#" onclick="switchTab('login'); return false;">Kiring</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Phone Login Modal -->
+    <div id="phoneModal" class="phone-modal">
+        <div class="phone-modal-content">
+            <span class="close" onclick="closePhoneModal()">&times;</span>
+            <h3 style="text-align: center; margin-bottom: 20px;">
+                <i class="fas fa-phone"></i> Telefon orqali kirish
+            </h3>
+
+            <div class="form-group">
+                <label for="phoneInput">Telefon Raqam</label>
+                <input type="tel" id="phoneInput" placeholder="+998 XX XXX-XX-XX">
+            </div>
+
+            <div id="recaptcha-container" style="margin-bottom: 20px;"></div>
+
+            <div class="form-group" id="verificationCodeInput">
+                <label for="verificationCode">Tasdiqlash Kodi</label>
+                <input type="text" id="verificationCode" placeholder="Kodni kiriting">
+            </div>
+
+            <p class="phone-modal-message"></p>
+
+            <button class="btn-block" id="phoneSubmitBtn" onclick="handlePhoneLogin()">
+                Kodni Yuborish
+            </button>
+        </div>
+    </div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="config.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>

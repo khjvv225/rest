@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - BUKHARA REST</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Admin Login (if not authenticated) -->
+    <div id="adminLoginDiv" class="admin-login-container">
+        <div class="admin-login-box">
+            <h1><i class="fas fa-crown"></i> Admin Panel</h1>
+            <form id="adminLoginForm" class="admin-login-form">
+                <div class="form-group">
+                    <label for="adminEmail"><i class="fas fa-envelope"></i> Admin Email</label>
+                    <input type="email" id="adminEmail" placeholder="admin@bukhararest.uz" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword"><i class="fas fa-lock"></i> Parol</label>
+                    <input type="password" id="adminPassword" placeholder="******" required>
+                </div>
+                <button type="submit" class="btn-primary btn-block">
+                    <i class="fas fa-sign-in-alt"></i> Kirish
+                </button>
+            </form>
+            <p class="text-center mt-20">
+                <a href="index.html" class="link">
+                    <i class="fas fa-arrow-left"></i> Asosiy Sahifaga Qaytish
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Admin Panel (if authenticated) -->
+    <div id="adminPanelDiv" style="display:none;">
+        <!-- Navigation -->
+        <nav class="admin-navbar">
+            <div class="container">
+                <div class="admin-logo">
+                    <i class="fas fa-crown"></i> BUKHARA REST Admin
+                </div>
+                <div class="admin-user-info">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="adminUserName">Administrator</span>
+                    <button id="logoutBtn" class="btn-logout">
+                        <i class="fas fa-sign-out-alt"></i> Chiqish
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Sidebar & Main Content -->
+        <div class="admin-container">
+            <!-- Sidebar -->
+            <aside class="admin-sidebar">
+                <div class="admin-profile">
+                    <div class="admin-avatar">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h4>Administrator</h4>
+                    <p id="adminLoginTime"></p>
+                </div>
+                
+                <ul class="admin-menu">
+                    <li>
+                        <a href="#" onclick="showAdminSection('dashboard')" class="active">
+                            <i class="fas fa-chart-pie"></i> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showAdminSection('users')">
+                            <i class="fas fa-users"></i> Foydalanuvchilar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showAdminSection('bookings')">
+                            <i class="fas fa-calendar-check"></i> Bronlar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showAdminSection('menu')">
+                            <i class="fas fa-utensils"></i> Menyu
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showAdminSection('messages')">
+                            <i class="fas fa-envelope"></i> Xabarlar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showAdminSection('settings')">
+                            <i class="fas fa-cog"></i> Sozlamalar
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="sidebar-footer">
+                    <p><i class="fas fa-info-circle"></i> Version 1.0.0</p>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="admin-main">
+                <!-- Dashboard Section -->
+                <section id="dashboardSection" class="admin-section active">
+                    <div class="section-header">
+                        <h2><i class="fas fa-chart-pie"></i> Dashboard</h2>
+                        <button onclick="refreshDashboard()" class="btn-refresh">
+                            <i class="fas fa-sync-alt"></i> Yangilash
+                        </button>
+                    </div>
+                    
+                    <!-- Stats Cards -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>Jami Foydalanuvchilar</h3>
+                            <p id="totalUsers" class="stat-number">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar-day"></i>
+                            </div>
+                            <h3>Bugungi Bronlar</h3>
+                            <p id="todayBookings" class="stat-number">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <h3>Jami Bronlar</h3>
+                            <p id="totalBookings" class="stat-number">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <h3>Menyu Elementlari</h3>
+                            <p id="totalMenuItems" class="stat-number">0</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Activity -->
+                    <div class="activity-section">
+                        <h3><i class="fas fa-history"></i> So'nggi Faoliyat</h3>
+                        <div class="activity-list" id="activityList">
+                            <!-- Activity items will load here -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Users Section -->
+                <section id="usersSection" class="admin-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-users"></i> Foydalanuvchilar</h2>
+                        <div class="search-box">
+                            <input type="text" id="userSearch" placeholder="Foydalanuvchi qidirish...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Ism</th>
+                                    <th>Email</th>
+                                    <th>Telefon</th>
+                                    <th>Ro'yxatdan O'tish</th>
+                                    <th>Amallar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTableBody">
+                                <!-- Users will load here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Bookings Section -->
+                <section id="bookingsSection" class="admin-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-calendar-check"></i> Bronlar</h2>
+                        <div class="filter-buttons">
+                            <button onclick="filterBookings('all')" class="btn-filter active">Barchasi</button>
+                            <button onclick="filterBookings('pending')" class="btn-filter">Kutilmoqda</button>
+                            <button onclick="filterBookings('confirmed')" class="btn-filter">Tasdiqlangan</button>
+                        </div>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Ism</th>
+                                    <th>Telefon</th>
+                                    <th>Sana</th>
+                                    <th>Vaqt</th>
+                                    <th>Mehmonlar</th>
+                                    <th>Holati</th>
+                                    <th>Amallar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bookingsTableBody">
+                                <!-- Bookings will load here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Menu Section -->
+                <section id="menuSection" class="admin-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-utensils"></i> Menyu Boshqaruvi</h2>
+                        <button onclick="showAddMenuForm()" class="btn-primary">
+                            <i class="fas fa-plus"></i> Yangi Taom
+                        </button>
+                    </div>
+                    
+                    <!-- Add Menu Form -->
+                    <div id="addMenuFormDiv" class="form-modal" style="display:none;">
+                        <div class="form-header">
+                            <h3><i class="fas fa-hamburger"></i> Taom Qo'shish</h3>
+                            <button onclick="hideAddMenuForm()" class="btn-close">&times;</button>
+                        </div>
+                        <form id="addMenuForm" class="admin-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="menuName">Taom Nomi *</label>
+                                    <input type="text" id="menuName" placeholder="Masalan: Palov" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="menuCategory">Kategoriya *</label>
+                                    <select id="menuCategory" required>
+                                        <option value="">Tanlang</option>
+                                        <option value="main">Asosiy Taom</option>
+                                        <option value="appetizer">Ochildi</option>
+                                        <option value="dessert">Shirinlik</option>
+                                        <option value="drink">Ichimlik</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="menuPrice">Narx (UZS) *</label>
+                                    <input type="number" id="menuPrice" placeholder="Masalan: 35000" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="menuImage">Rasm URL (ixtiyoriy)</label>
+                                    <input type="url" id="menuImage" placeholder="https://example.com/image.jpg">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="menuDescription">Tavsif *</label>
+                                <textarea id="menuDescription" placeholder="Taomning tarkibi va tayyorlanish usuli..." rows="3" required></textarea>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn-primary">
+                                    <i class="fas fa-save"></i> Saqlash
+                                </button>
+                                <button type="button" onclick="hideAddMenuForm()" class="btn-secondary">
+                                    <i class="fas fa-times"></i> Bekor Qilish
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Menu Items Table -->
+                    <div class="table-responsive">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Nomi</th>
+                                    <th>Kategoriya</th>
+                                    <th>Narx</th>
+                                    <th>Tavsif</th>
+                                    <th>Amallar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="menuTableBody">
+                                <!-- Menu items will load here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Messages Section -->
+                <section id="messagesSection" class="admin-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-envelope"></i> Xabarlar</h2>
+                    </div>
+                    
+                    <div class="messages-list" id="messagesList">
+                        <!-- Messages will load here -->
+                    </div>
+                </section>
+
+                <!-- Settings Section -->
+                <section id="settingsSection" class="admin-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-cog"></i> Sozlamalar</h2>
+                    </div>
+                    
+                    <div class="settings-form">
+                        <form id="settingsForm" class="admin-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="restaurantName">Restoran Nomi *</label>
+                                    <input type="text" id="restaurantName" placeholder="BUKHARA REST" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="restaurantPhone">Telefon Raqam *</label>
+                                    <input type="tel" id="restaurantPhone" placeholder="+998 90 123 45 67" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="restaurantEmail">Email *</label>
+                                    <input type="email" id="restaurantEmail" placeholder="info@bukhararest.uz" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="restaurantAddress">Manzil *</label>
+                                    <input type="text" id="restaurantAddress" placeholder="Buxoro shahri, Markaziy ko'cha 123" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="restaurantDescription">Restoran Tavsifi *</label>
+                                <textarea id="restaurantDescription" placeholder="Bizning restoran haqida..." rows="4" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="workingHours">Ish Vaqti *</label>
+                                <input type="text" id="workingHours" placeholder="Har kuni 9:00 - 23:00" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="adminPasswordChange">Admin Parolni O'zgartirish (ixtiyoriy)</label>
+                                <input type="password" id="adminPasswordChange" placeholder="Yangi parol">
+                                <small>Parolni o'zgartirmoqchi bo'lmasangiz, bo'sh qoldiring</small>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn-primary">
+                                    <i class="fas fa-save"></i> Saqlash
+                                </button>
+                                <button type="button" onclick="resetSettings()" class="btn-secondary">
+                                    <i class="fas fa-undo"></i> Qayta Yuklash
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div id="modalOverlay" class="modal-overlay" style="display:none;">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display:none;">
+        <div class="loading-spinner"></div>
+        <p>Yuklanmoqda...</p>
+    </div>
+
+    <!-- Notification Container -->
+    <div id="notificationContainer"></div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js"></script>
+    <script src="config.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
