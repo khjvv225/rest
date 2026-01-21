@@ -1,94 +1,24 @@
-// Dynamic API base URL for deployment/local
-const BASE_API_URL = window.API_BASE_URL || (window.location.hostname === 'localhost' ? 'http://localhost:5000' : '');
+// BUKHARA REST - Frontend JS
+// Menu rendering, booking, contact, auth, profile, admin
+// Firebase config is loaded from config.js
 
-// Menu data from backend
-let defaultMenu = [];
+// Default menu data
+const menuItems = [
+    { id: 1, name: "Manti", category: "main", price: 35000, description: "O'zbek milliy taomi - go'sht bilan to'ldirilgan manti", image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop" },
+    { id: 2, name: "Palov", category: "main", price: 30000, description: "Aromatic go'sht va sholi bilan tayyorlangan palov", image: "https://images.unsplash.com/photo-1585521537556-0dadc4c32df9?w=400&h=300&fit=crop" },
+    { id: 3, name: "Shurva", category: "main", price: 25000, description: "Zamonaviy go'sht va sabzavotlar bilan pishirilgan shurva", image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop" },
+    { id: 4, name: "Somsa", category: "appetizer", price: 12000, description: "Tuxum va go'sht bilan to'ldirilgan crispy somsa", image: "https://images.unsplash.com/photo-1629452333337-aef1b51e3eef?w=400&h=300&fit=crop" },
+    { id: 5, name: "Halva", category: "dessert", price: 10000, description: "Shipli halva - an'anaviy o'zbek shirinligi", image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop" },
+    { id: 6, name: "Choy", category: "drink", price: 5000, description: "Issiq o'zbek choy", image: "https://images.unsplash.com/photo-1597318301270-a37f1e08c39f?w=400&h=300&fit=crop" }
+];
 
-let currentUser = null;
-let currentFilter = 'all';
-
-// Initialize
-document.addEventListener('DOMContentLoaded', function() {
-    loadMenu();
-    loadBookings();
-    setupFormHandlers();
-    checkUserAuth();
-    setupMobileMenu();
-});
-
-// Check if user is logged in (JWT localStorage)
-function checkUserAuth() {
-    const token = localStorage.getItem('token');
-    if (token) {
-        // Optionally decode token for user info
-        document.querySelector('.btn-login').innerHTML = `<i class="fas fa-user"></i> Profil`;
-        document.querySelector('.btn-login').href = 'profile.html';
-        currentUser = { token };
-    } else {
-        currentUser = null;
-    }
-}
-
-// Setup mobile menu
-function setupMobileMenu() {
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if (hamburger && navLinks) {
-        hamburger.addEventListener('click', function() {
-            const isDisplayed = navLinks.style.display === 'flex';
-            navLinks.style.display = isDisplayed ? 'none' : 'flex';
-            
-            // Adjust for mobile
-            if (window.innerWidth <= 768) {
-                if (!isDisplayed) {
-                    navLinks.style.flexDirection = 'column';
-                    navLinks.style.position = 'absolute';
-                    navLinks.style.top = '100%';
-                    navLinks.style.left = '0';
-                    navLinks.style.right = '0';
-                    navLinks.style.background = 'white';
-                    navLinks.style.padding = '20px';
-                    navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
-                    navLinks.style.gap = '15px';
-                }
-            }
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-                navLinks.style.display = 'none';
-            }
-        });
-    }
-}
-
-// Load Menu
-async function loadMenu(filter = 'all') {
-    currentFilter = filter;
+// Render menu on index.html and menu.html
+function loadMenu(filter = 'all') {
     const menuGrid = document.getElementById('menuGrid');
     if (!menuGrid) return;
-
+    let filteredMenu = menuItems;
+    if (filter !== 'all') filteredMenu = menuItems.filter(item => item.category === filter);
     menuGrid.innerHTML = '';
-
-    try {
-        const res = await fetch(BASE_API_URL + '/api/public/menu');
-        const data = await res.json();
-        if (data.success && Array.isArray(data.menu)) {
-            defaultMenu = data.menu;
-        } else {
-            defaultMenu = [];
-        }
-    } catch (e) {
-        defaultMenu = [];
-    }
-
-    let filteredMenu = defaultMenu;
-    if (filter !== 'all') {
-        filteredMenu = defaultMenu.filter(item => item.category === filter);
-    }
-
     filteredMenu.forEach(item => {
         const card = document.createElement('div');
         card.className = 'menu-card';
@@ -97,235 +27,21 @@ async function loadMenu(filter = 'all') {
             <div class="menu-card-content">
                 <h3 class="menu-card-name">${item.name}</h3>
                 <p>${item.description}</p>
-                <span class="menu-card-price">${item.price?.toLocaleString('uz-UZ') || ''} so'm</span>
+                <span class="menu-card-price">${item.price.toLocaleString('uz-UZ')} so'm</span>
             </div>
         `;
         menuGrid.appendChild(card);
     });
 }
 
-// Filter Menu
+// Filter menu (menu.html)
 function filterMenu(category) {
     document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
     event.target.classList.add('active');
     loadMenu(category);
 }
 
-
-// Load Bookings from backend (admin only, placeholder)
-function loadBookings() {
-    // TODO: Implement admin booking list fetch from backend if needed
-    // fetch('/api/bookings', { headers: { Authorization: 'Bearer ...' } })
-    //   .then(res => res.json())
-    //   .then(data => { ... });
-}
-
-// Setup Form Handlers
-function setupFormHandlers() {
-    // Booking Form
-    const bookingForm = document.getElementById('bookingForm');
-    if (bookingForm) {
-        bookingForm.addEventListener('submit', handleBookingSubmit);
-    }
-
-    // Contact Form
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', handleContactSubmit);
-    }
-    
-    // Login Form
-    const loginForm = document.getElementById('emailLoginForm');
-    if (loginForm) {
-        loginForm.addEventListener('submit', handleEmailLogin);
-    }
-    
-    // Register Form
-    const registerForm = document.getElementById('emailRegisterForm');
-    if (registerForm) {
-        registerForm.addEventListener('submit', handleEmailRegister);
-    }
-}
-
-// Handle Email Login (backend)
-async function handleEmailLogin(e) {
-    e.preventDefault();
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
-    try {
-        const res = await fetch(BASE_API_URL + '/api/auth/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password })
-        });
-        const data = await res.json();
-        if (data.success && data.token) {
-            localStorage.setItem('token', data.token);
-            showNotification('Muvaffaqiyatli kirdingiz!', 'success');
-            setTimeout(() => {
-                window.location.href = 'index.html';
-            }, 1500);
-        } else {
-            showNotification('Login xatosi: ' + (data.message || 'Login xatosi'), 'error');
-        }
-    } catch (error) {
-        showNotification('Login xatosi: ' + error.message, 'error');
-    }
-}
-
-// Handle Email Registration (backend)
-async function handleEmailRegister(e) {
-    e.preventDefault();
-    const name = document.getElementById('registerName').value;
-    const email = document.getElementById('registerEmail').value;
-    const phone = document.getElementById('registerPhone').value;
-    const password = document.getElementById('registerPassword').value;
-    try {
-        const res = await fetch(BASE_API_URL + '/api/auth/register', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, phone, password })
-        });
-        const data = await res.json();
-        if (data.success && data.token) {
-            localStorage.setItem('token', data.token);
-            showNotification('Muvaffaqiyatli ro\'yxatdan o\'tdingiz!', 'success');
-            setTimeout(() => {
-                window.location.href = 'index.html';
-            }, 1500);
-        } else {
-            showNotification('Ro\'yxatdan o\'tish xatosi: ' + (data.message || 'Xatolik'), 'error');
-        }
-    } catch (error) {
-        showNotification('Ro\'yxatdan o\'tish xatosi: ' + error.message, 'error');
-    }
-}
-
-// Handle Booking Submission (to backend)
-async function handleBookingSubmit(e) {
-    e.preventDefault();
-
-    // Collect booking data from form
-    const booking = {
-        userName: document.getElementById('guestName').value,
-        email: document.getElementById('guestEmail').value,
-        phone: document.getElementById('guestPhone').value,
-        date: document.getElementById('bookingDate').value,
-        time: document.getElementById('bookingTime').value,
-        guests: parseInt(document.getElementById('guestCount').value),
-        notes: document.getElementById('guestNotes').value
-    };
-
-    try {
-        const res = await fetch(BASE_API_URL + '/api/public/booking', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(booking)
-        });
-        const data = await res.json();
-        if (data.success) {
-            showNotification('Broningiz muvaffaqiyatli qabul qilindi!', 'success');
-            document.getElementById('bookingForm').reset();
-        } else {
-            showNotification('Xatolik: ' + (data.message || 'Bron qilishda xatolik'), 'error');
-        }
-    } catch (error) {
-        showNotification('Xatolik: ' + error.message, 'error');
-    }
-}
-
-// Handle Contact Submission (to backend)
-async function handleContactSubmit(e) {
-    e.preventDefault();
-
-    const message = {
-        name: document.getElementById('contactName').value,
-        email: document.getElementById('contactEmail').value,
-        message: document.getElementById('contactMessage').value
-    };
-
-    try {
-        const res = await fetch(BASE_API_URL + '/api/public/message', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(message)
-        });
-        const data = await res.json();
-        if (data.success) {
-            showNotification('Xabaringiz yuborildi! Tez orada siz bilan bog\'lanamiz.', 'success');
-            document.getElementById('contactForm').reset();
-        } else {
-            showNotification('Xatolik: ' + (data.message || 'Xabar yuborishda xatolik'), 'error');
-        }
-    } catch (error) {
-        showNotification('Xatolik: ' + error.message, 'error');
-    }
-}
-
-// Show Notification
-function showNotification(message, type = 'info') {
-    // Remove existing notifications
-    const existingNotifications = document.querySelectorAll('.notification');
-    existingNotifications.forEach(notif => notif.remove());
-    
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.innerHTML = `
-        <div class="notification-content">
-            <i class="fas fa-${getNotificationIcon(type)}"></i>
-            <span>${message}</span>
-        </div>
-        <button onclick="this.parentElement.remove()">&times;</button>
-    `;
-    
-    // Add to document
-    document.body.appendChild(notification);
-    
-    // Position notification
-    notification.style.position = 'fixed';
-    notification.style.top = '20px';
-    notification.style.right = '20px';
-    notification.style.zIndex = '9999';
-    
-    // Remove after 5 seconds
-    setTimeout(() => {
-        if (notification.parentElement) {
-            notification.remove();
-        }
-    }, 5000);
-}
-
-function getNotificationIcon(type) {
-    const icons = {
-        success: 'check-circle',
-        error: 'exclamation-circle',
-        warning: 'exclamation-triangle',
-        info: 'info-circle'
-    };
-    return icons[type] || 'info-circle';
-}
-
-// Logout function (JWT)
-function logout() {
-    localStorage.removeItem('token');
-    showNotification('Tizimdan chiqdingiz', 'info');
-    setTimeout(() => {
-        window.location.href = 'index.html';
-    }, 1500);
-}
-
-// Handle window resize for mobile menu
-window.addEventListener('resize', function() {
-    const navLinks = document.querySelector('.nav-links');
-    if (window.innerWidth > 768 && navLinks) {
-        navLinks.style.display = 'flex';
-        navLinks.style.flexDirection = 'row';
-        navLinks.style.position = 'static';
-        navLinks.style.background = 'transparent';
-        navLinks.style.padding = '0';
-        navLinks.style.boxShadow = 'none';
-    } else if (window.innerWidth <= 768 && navLinks) {
-        navLinks.style.display = 'none';
-    }
+document.addEventListener('DOMContentLoaded', function() {
+    loadMenu();
+    // Add more initializations as needed
 });

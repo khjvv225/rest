@@ -15,7 +15,6 @@
             text-align: center;
             padding: 100px 20px;
         }
-        
         .filter-buttons {
             display: flex;
             justify-content: center;
@@ -23,7 +22,6 @@
             margin-bottom: 40px;
             flex-wrap: wrap;
         }
-        
         .filter-btn {
             padding: 10px 25px;
             border: 2px solid var(--primary);
@@ -34,24 +32,20 @@
             font-weight: 600;
             transition: all 0.3s ease;
         }
-        
         .filter-btn:hover,
         .filter-btn.active {
             background: var(--primary);
             color: white;
         }
-        
         .category-section {
             margin-bottom: 60px;
         }
-        
         .category-title {
             text-align: center;
             margin-bottom: 30px;
             color: var(--secondary);
             position: relative;
         }
-        
         .category-title::after {
             content: '';
             display: block;
@@ -63,7 +57,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="logo">🏰 BUKHARA REST</a>
@@ -81,16 +74,12 @@
             </div>
         </div>
     </nav>
-
-    <!-- Hero Section -->
     <section class="menu-hero">
         <div class="container">
             <h1>Bizning Menyu</h1>
             <p>An'anaviy va zamonaviy o'zbek taomlari</p>
         </div>
     </section>
-
-    <!-- Filter Buttons -->
     <section class="section">
         <div class="container">
             <div class="filter-buttons">
@@ -100,15 +89,9 @@
                 <button class="filter-btn" onclick="filterMenu('dessert')">Shirinliklar</button>
                 <button class="filter-btn" onclick="filterMenu('drink')">Ichimliklar</button>
             </div>
-            
-            <!-- Menu Grid -->
-            <div class="menu-grid" id="menuGrid">
-                <!-- Menu items will load here -->
-            </div>
+            <div class="menu-grid" id="menuGrid"></div>
         </div>
     </section>
-
-    <!-- Special Offers -->
     <section class="section bg-light">
         <div class="container">
             <h2 class="section-title">Maxsus Takliflar</h2>
@@ -135,8 +118,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -162,146 +143,10 @@
             <p class="copyright">© 2024 BUKHARA REST. Barcha huquqlar himoyalangan.</p>
         </div>
     </footer>
-
-    <script>
-        // Default menu data
-        const menuItems = [
-            {
-                id: 1,
-                name: "Manti",
-                category: "main",
-                price: 35000,
-                description: "O'zbek milliy taomi - go'sht bilan to'ldirilgan manti",
-                image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop"
-            },
-            {
-                id: 2,
-                name: "Palov",
-                category: "main",
-                price: 30000,
-                description: "Aromatic go'sht va sholi bilan tayyorlangan palov",
-                image: "https://images.unsplash.com/photo-1585521537556-0dadc4c32df9?w=400&h=300&fit=crop"
-            },
-            {
-                id: 3,
-                name: "Shurva",
-                category: "main",
-                price: 25000,
-                description: "Zamonaviy go'sht va sabzavotlar bilan pishirilgan shurva",
-                image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop"
-            },
-            {
-                id: 4,
-                name: "Norin",
-                category: "main",
-                price: 28000,
-                description: "An'anaviy o'zbek norin taomi",
-                image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&h=300&fit=crop"
-            },
-            {
-                id: 5,
-                name: "Lag'mon",
-                category: "main",
-                price: 22000,
-                description: "O'zbek lag'moni sabzavotlar bilan",
-                image: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400&h=300&fit=crop"
-            },
-            {
-                id: 6,
-                name: "Somsa",
-                category: "appetizer",
-                price: 12000,
-                description: "Tuxum va go'sht bilan to'ldirilgan crispy somsa",
-                image: "https://images.unsplash.com/photo-1629452333337-aef1b51e3eef?w=400&h=300&fit=crop"
-            },
-            {
-                id: 7,
-                name: "Chuchvara",
-                category: "appetizer",
-                price: 18000,
-                description: "Kichkina chuchvaralar qaymoq bilan",
-                image: "https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?w=400&h=300&fit=crop"
-            },
-            {
-                id: 8,
-                name: "Halva",
-                category: "dessert",
-                price: 10000,
-                description: "Shipli halva - an'anaviy o'zbek shirinligi",
-                image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop"
-            },
-            {
-                id: 9,
-                name: "Quymoq",
-                category: "dessert",
-                price: 15000,
-                description: "Sutli quymoq yong'oq bilan",
-                image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&h=300&fit=crop"
-            },
-            {
-                id: 10,
-                name: "Choy",
-                category: "drink",
-                price: 5000,
-                description: "Issiq o'zbek choy",
-                image: "https://images.unsplash.com/photo-1597318301270-a37f1e08c39f?w=400&h=300&fit=crop"
-            },
-            {
-                id: 11,
-                name: "Sharbat",
-                category: "drink",
-                price: 8000,
-                description: "Tabiiy meva sharbatlari",
-                image: "https://images.unsplash.com/photo-1628432136688-5fba4df67d9d?w=400&h=300&fit=crop"
-            },
-            {
-                id: 12,
-                name: "Ayron",
-                category: "drink",
-                price: 7000,
-                description: "Sovuq ayron",
-                image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=300&fit=crop"
-            }
-        ];
-
-        let currentFilter = 'all';
-
-        document.addEventListener('DOMContentLoaded', function() {
-            loadMenu();
-        });
-
-        function loadMenu(filter = 'all') {
-            currentFilter = filter;
-            const menuGrid = document.getElementById('menuGrid');
-            if (!menuGrid) return;
-
-            menuGrid.innerHTML = '';
-
-            let filteredMenu = menuItems;
-            if (filter !== 'all') {
-                filteredMenu = menuItems.filter(item => item.category === filter);
-            }
-
-            filteredMenu.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'menu-card';
-                card.innerHTML = `
-                    <img src="${item.image}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/400x300?text=${item.name}'">
-                    <div class="menu-card-content">
-                        <h3 class="menu-card-name">${item.name}</h3>
-                        <p>${item.description}</p>
-                        <span class="menu-card-price">${item.price.toLocaleString('uz-UZ')} so'm</span>
-                    </div>
-                `;
-                menuGrid.appendChild(card);
-            });
-        }
-
-        function filterMenu(category) {
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            loadMenu(category);
-        }
-    </script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js"></script>
+    <script src="config.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
