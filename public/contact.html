@@ -1,1 +1,60 @@
-<!-- ...existing code from contact.html... -->
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Aloqa - BUKHARA REST</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<!-- Navigation -->
+	<nav class="navbar">
+		<div class="container">
+			<a href="index.html" class="logo">🏰 BUKHARA REST</a>
+			<div class="nav-links">
+				<a href="index.html">Asosiy</a>
+				<a href="menu.html">Menyu</a>
+				<a href="booking.html">Bron Qilish</a>
+				<a href="about.html">Biz Haqimizda</a>
+				<a href="contact.html" class="active">Aloqa</a>
+				<a href="auth.html" class="btn-login"><i class="fas fa-user"></i> Kirish</a>
+				<a href="admin.html" class="btn-admin"><i class="fas fa-cog"></i> Admin</a>
+			</div>
+			<div class="hamburger">
+				<i class="fas fa-bars"></i>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Hero Section -->
+	<section class="hero" style="background: linear-gradient(rgba(212, 165, 116, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); background-size: cover;">
+		<div class="container">
+			<h1>Biz Bilan Bog'laning</h1>
+			<p>Savollaringiz bo'lsa, bizga yozing</p>
+		</div>
+	</section>
+
+	<!-- Contact Section -->
+	<section class="section">
+		<div class="container">
+			<div class="contact-page-container">
+				<!-- Contact Form -->
+				<div class="contact-form-container">
+					<h2 class="section-title">Xabar Yuborish</h2>
+                    
+					<form id="contactForm" class="contact-form">
+						<div class="form-row">
+							<div class="form-group">
+								<label for="contactName">Ismingiz *</label>
+								<input type="text" id="contactName" placeholder="Ism familiyangiz" required>
+							</div>
+							<div class="form-group">
+								<label for="contactEmail">Email *</label>
+								<input type="email" id="contactEmail" placeholder="email@example.com" required>
+							</div>
+						</div>
+                        
+						<div class="form-group">
+							<label for="contactPhone">Telefon Raqam (ixtiyoriy)</label>
+							<input type="tel" id="contactPhone" placeholder="+998 XX XXX-XX-XX">

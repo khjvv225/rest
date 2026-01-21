@@ -1,1 +1,60 @@
-<!-- ...existing code from menu.html... -->
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Menyu - BUKHARA REST</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet" href="styles.css">
+	<style>
+		.menu-hero {
+			background: linear-gradient(rgba(212, 165, 116, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+			background-size: cover;
+			background-position: center;
+			color: white;
+			text-align: center;
+			padding: 100px 20px;
+		}
+        
+		.filter-buttons {
+			display: flex;
+			justify-content: center;
+			gap: 15px;
+			margin-bottom: 40px;
+			flex-wrap: wrap;
+		}
+        
+		.filter-btn {
+			padding: 10px 25px;
+			border: 2px solid var(--primary);
+			background: transparent;
+			color: var(--primary);
+			border-radius: 30px;
+			cursor: pointer;
+			font-weight: 600;
+			transition: all 0.3s ease;
+		}
+        
+		.filter-btn:hover,
+		.filter-btn.active {
+			background: var(--primary);
+			color: white;
+		}
+        
+		.category-section {
+			margin-bottom: 60px;
+		}
+        
+		.category-title {
+			text-align: center;
+			margin-bottom: 30px;
+			color: var(--secondary);
+			position: relative;
+		}
+        
+		.category-title::after {
+			content: '';
+			display: block;
+			width: 80px;
+			height: 3px;
+			background: var(--primary);
