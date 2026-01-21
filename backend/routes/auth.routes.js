@@ -8,15 +8,16 @@ const bcrypt = require('bcryptjs');
 // User registration
 router.post('/register', async (req, res, next) => {
   try {
-    const { name, email, password } = req.body;
-    if (!name || !email || !password) {
+    const { name, email, password, phone } = req.body;
+    if (!name || !email || !password || !phone) {
       return res.status(400).json({ success: false, message: 'Barcha maydonlarni to\'ldiring.' });
     }
-    const existing = await User.findOne({ email });
+    const existing = await User.findOne({ $or: [{ email }, { phone }] });
     if (existing) {
-      return res.status(409).json({ success: false, message: 'Bu email allaqachon ro\'yxatdan o\'tgan.' });
+      return res.status(409).json({ success: false, message: 'Bu email yoki telefon allaqachon ro\'yxatdan o\'tgan.' });
     }
-    const user = await User.create({ name, email, password });
+    // Assume phone is verified by Firebase in frontend
+    const user = await User.create({ name, email, password, phone, phoneVerified: true, loginMethod: 'phone' });
     const tokens = generateToken(user, 'user');
     res.status(201).json({ success: true, user, ...tokens });
   } catch (err) {

@@ -44,7 +44,35 @@
         </div>
     </section>
 
-    <section class="section bg-light">
+    <!-- Yangi foydalanuvchi uchun ro'yxatdan o'tish -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Ro'yxatdan o'tish</h2>
+            <form id="registerForm" class="admin-login-form">
+                <div class="form-group">
+                    <label for="regName">Ism</label>
+                    <input type="text" id="regName" placeholder="Ismingiz" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPhone">Telefon raqam</label>
+                    <input type="tel" id="regPhone" placeholder="+998 90 123 45 67" required>
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">Email</label>
+                    <input type="email" id="regEmail" placeholder="email@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Parol</label>
+                    <input type="password" id="regPassword" placeholder="Parol" required>
+                </div>
+                <div id="recaptcha-container"></div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Ro'yxatdan o'tish</button>
+                </div>
+            </form>
+            <div id="registerMessage" style="margin-top:20px;"></div>
+        </div>
+    </section>
         <div class="container">
             <div class="contact-grid">
                 <div class="contact-item">

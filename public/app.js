@@ -43,5 +43,45 @@ function filterMenu(category) {
 
 document.addEventListener('DOMContentLoaded', function() {
     loadMenu();
-    // Add more initializations as needed
+    // Firebase Phone Auth & Registration
+    const registerForm = document.getElementById('registerForm');
+    if (registerForm) {
+        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+            'size': 'invisible',
+            'callback': function(response) {
+                // reCAPTCHA solved
+            }
+        });
+
+        registerForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const name = document.getElementById('regName').value;
+            const phone = document.getElementById('regPhone').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const registerMessage = document.getElementById('registerMessage');
+
+            // Firebase phone verification
+            try {
+                const confirmationResult = await firebase.auth().signInWithPhoneNumber(phone, window.recaptchaVerifier);
+                const code = prompt('Telefon raqamga kelgan kodni kiriting:');
+                const result = await confirmationResult.confirm(code);
+                // Phone verified, now create user in backend
+                const res = await fetch('/api/users/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, phone, email, password })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    registerMessage.innerHTML = '<span style="color:green">Ro\'yxatdan o\'tish muvaffaqiyatli!</span>';
+                    registerForm.reset();
+                } else {
+                    registerMessage.innerHTML = '<span style="color:red">' + (data.message || 'Xatolik!') + '</span>';
+                }
+            } catch (err) {
+                registerMessage.innerHTML = '<span style="color:red">Telefon tasdiqlashda xatolik: ' + err.message + '</span>';
+            }
+        });
+    }
 });
