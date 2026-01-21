@@ -1,4 +1,59 @@
 /* BUKHARA REST - Global Styles */
+/* Premium registration form styles */
+.premium-group {
+    position: relative;
+    margin-bottom: 2rem;
+    background: linear-gradient(90deg, #fff7e6 0%, #f5e1c3 100%);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(212, 165, 116, 0.15);
+    padding: 1.5rem 1.5rem 1.5rem 4.5rem;
+    border: 1px solid #d4a574;
+}
+.premium-group label {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #b4884a;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+.premium-icon {
+    font-size: 2.2rem;
+    margin-right: 1rem;
+    color: #d4a574;
+    filter: drop-shadow(0 2px 6px #d4a57455);
+}
+.premium-group input {
+    font-size: 1.15rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #d4a574;
+    background: #fff;
+    color: #7a5c2e;
+    box-shadow: 0 2px 8px rgba(212, 165, 116, 0.08);
+    transition: border 0.2s;
+}
+.premium-group input:focus {
+    border: 2px solid #b4884a;
+    outline: none;
+}
+.admin-login-form .form-actions button {
+    font-size: 1.2rem;
+    padding: 16px 32px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #d4a574 0%, #b4884a 100%);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(212, 165, 116, 0.18);
+    border: none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+.admin-login-form .form-actions button:hover {
+    background: linear-gradient(90deg, #b4884a 0%, #d4a574 100%);
+    box-shadow: 0 8px 32px rgba(212, 165, 116, 0.25);
+    transform: translateY(-2px) scale(1.04);
+}
 :root {
     --primary: #d4a574;
     --secondary: #2c3e50;
