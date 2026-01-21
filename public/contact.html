@@ -39,23 +39,86 @@
 	<!-- Contact Section -->
 	<section class="section">
 		<div class="container">
-			<div class="contact-page-container">
-				<!-- Contact Form -->
-				<div class="contact-form-container">
-					<h2 class="section-title">Xabar Yuborish</h2>
-                    
-					<form id="contactForm" class="contact-form">
-						<div class="form-row">
-							<div class="form-group">
-								<label for="contactName">Ismingiz *</label>
-								<input type="text" id="contactName" placeholder="Ism familiyangiz" required>
-							</div>
-							<div class="form-group">
-								<label for="contactEmail">Email *</label>
-								<input type="email" id="contactEmail" placeholder="email@example.com" required>
-							</div>
-						</div>
-                        
-						<div class="form-group">
-							<label for="contactPhone">Telefon Raqam (ixtiyoriy)</label>
-							<input type="tel" id="contactPhone" placeholder="+998 XX XXX-XX-XX">
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Aloqa - BUKHARA REST</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<nav class="navbar">
+		<div class="container">
+			<a href="index.html" class="logo">🏰 BUKHARA REST</a>
+			<div class="nav-links">
+				<a href="index.html">Asosiy</a>
+				<a href="menu.html">Menyu</a>
+				<a href="booking.html">Bron Qilish</a>
+				<a href="about.html">Biz Haqimizda</a>
+				<a href="contact.html" class="active">Aloqa</a>
+				<a href="auth.html" class="btn-login"><i class="fas fa-user"></i> Kirish</a>
+				<a href="admin.html" class="btn-admin"><i class="fas fa-cog"></i> Admin</a>
+			</div>
+			<div class="hamburger">
+				<i class="fas fa-bars"></i>
+			</div>
+		</div>
+	</nav>
+
+	<section class="section">
+		<div class="container">
+			<h1 class="section-title">Biz bilan bog'laning</h1>
+			<form id="contactForm" class="form">
+				<div class="form-group">
+					<label for="name">Ism</label>
+					<input type="text" id="name" name="name" required>
+				</div>
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input type="email" id="email" name="email" required>
+				</div>
+				<div class="form-group">
+					<label for="message">Xabar</label>
+					<textarea id="message" name="message" rows="5" required></textarea>
+				</div>
+				<button type="submit" class="btn-primary">Yuborish</button>
+				<div id="contactMessage" class="form-message"></div>
+			</form>
+		</div>
+	</section>
+
+	<footer class="footer">
+		<div class="container">
+			<div class="footer-grid">
+				<div>
+					<h3>BUKHARA REST</h3>
+					<p>O'zbek milliy taomlarining eng yaxshi namunalari</p>
+				</div>
+				<div>
+					<h3>Foydali Havolalar</h3>
+					<a href="menu.html">Menyu</a>
+					<a href="booking.html">Bron Qilish</a>
+					<a href="about.html">Biz Haqimizda</a>
+				</div>
+				<div>
+					<h3>Ijtimoiy Tarmoqlar</h3>
+					<div class="social-icons">
+						<a href="#"><i class="fab fa-facebook"></i></a>
+						<a href="#"><i class="fab fa-instagram"></i></a>
+						<a href="#"><i class="fab fa-telegram"></i></a>
+					</div>
+				</div>
+			</div>
+			<p class="copyright">© 2024 BUKHARA REST. Barcha huquqlar himoyalangan.</p>
+		</div>
+	</footer>
+
+	<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js"></script>
+	<script src="config.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
