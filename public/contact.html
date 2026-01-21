@@ -1,207 +1,238 @@
-	<!DOCTYPE html>
-	<html lang="uz">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Aloqa - BUKHARA REST</title>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-		<link rel="stylesheet" href="styles.css">
-	</head>
-	<body>
-		<nav class="navbar">
-			<div class="container">
-				<a href="index.html" class="logo">🏰 BUKHARA REST</a>
-				<div class="nav-links">
-					<a href="index.html">Asosiy</a>
-					<a href="menu.html">Menyu</a>
-					<a href="booking.html">Bron Qilish</a>
-					<a href="about.html">Biz Haqimizda</a>
-					<a href="contact.html" class="active">Aloqa</a>
-					<a href="auth.html" class="btn-login"><i class="fas fa-user"></i> Kirish</a>
-					<a href="admin.html" class="btn-admin"><i class="fas fa-cog"></i> Admin</a>
-				</div>
-				<div class="hamburger">
-					<i class="fas fa-bars"></i>
-				</div>
-			</div>
-		</nav>
-
-		<section class="section">
-			<div class="container">
-				<h1 class="section-title">Biz bilan bog'laning</h1>
-				<form id="contactForm" class="form">
-					<div class="form-group">
-						<label for="name">Ism</label>
-						<input type="text" id="name" name="name" required>
-					</div>
-					<div class="form-group">
-						<label for="email">Email</label>
-						<input type="email" id="email" name="email" required>
-					</div>
-					<div class="form-group">
-						<label for="message">Xabar</label>
-						<textarea id="message" name="message" rows="5" required></textarea>
-					</div>
-					<button type="submit" class="btn-primary">Yuborish</button>
-					<div id="contactMessage" class="form-message"></div>
-				</form>
-			</div>
-		</section>
-
-		<footer class="footer">
-			<div class="container">
-				<div class="footer-grid">
-					<div>
-						<h3>BUKHARA REST</h3>
-						<p>O'zbek milliy taomlarining eng yaxshi namunalari</p>
-					</div>
-					<div>
-						<h3>Foydali Havolalar</h3>
-						<a href="menu.html">Menyu</a>
-						<a href="booking.html">Bron Qilish</a>
-						<a href="about.html">Biz Haqimizda</a>
-					</div>
-					<div>
-						<h3>Ijtimoiy Tarmoqlar</h3>
-						<div class="social-icons">
-							<a href="#"><i class="fab fa-facebook"></i></a>
-							<a href="#"><i class="fab fa-instagram"></i></a>
-							<a href="#"><i class="fab fa-telegram"></i></a>
-						</div>
-					</div>
-				</div>
-				<p class="copyright">© 2024 BUKHARA REST. Barcha huquqlar himoyalangan.</p>
-			</div>
-		</footer>
-
-		<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js"></script>
-		<script src="config.js"></script>
-		<script src="app.js"></script>
-	</body>
-	</html>
-	<script src="app.js"></script>
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Aloqa - BUKHARA REST</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aloqa - BUKHARA REST</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-	<!-- Navigation -->
-	<nav class="navbar">
-		<div class="container">
-			<a href="index.html" class="logo">🏰 BUKHARA REST</a>
-			<div class="nav-links">
-				<a href="index.html">Asosiy</a>
-				<a href="menu.html">Menyu</a>
-				<a href="booking.html">Bron Qilish</a>
-				<a href="about.html">Biz Haqimizda</a>
-				<a href="contact.html" class="active">Aloqa</a>
-				<a href="auth.html" class="btn-login"><i class="fas fa-user"></i> Kirish</a>
-				<a href="admin.html" class="btn-admin"><i class="fas fa-cog"></i> Admin</a>
-			</div>
-			<div class="hamburger">
-				<i class="fas fa-bars"></i>
-			</div>
-		</div>
-	</nav>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">🏰 BUKHARA REST</a>
+            <div class="nav-links">
+                <a href="index.html">Asosiy</a>
+                <a href="menu.html">Menyu</a>
+                <a href="booking.html">Bron Qilish</a>
+                <a href="about.html">Biz Haqimizda</a>
+                <a href="contact.html" class="active">Aloqa</a>
+                <a href="auth.html" class="btn-login"><i class="fas fa-user"></i> Kirish</a>
+                <a href="admin.html" class="btn-admin"><i class="fas fa-cog"></i> Admin</a>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
 
-	<!-- Hero Section -->
-	<section class="hero" style="background: linear-gradient(rgba(212, 165, 116, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); background-size: cover;">
-		<div class="container">
-			<h1>Biz Bilan Bog'laning</h1>
-			<p>Savollaringiz bo'lsa, bizga yozing</p>
-		</div>
-	</section>
+    <!-- Hero Section -->
+    <section class="hero" style="background: linear-gradient(rgba(212, 165, 116, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); background-size: cover;">
+        <div class="container">
+            <h1>Biz Bilan Bog'laning</h1>
+            <p>Savollaringiz bo'lsa, bizga yozing</p>
+        </div>
+    </section>
 
-	<!-- Contact Section -->
-	<section class="section">
-		<div class="container">
-<!DOCTYPE html>
-<html lang="uz">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Aloqa - BUKHARA REST</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-	<link rel="stylesheet" href="styles.css">
-</head>
-<body>
-	<nav class="navbar">
-		<div class="container">
-			<a href="index.html" class="logo">🏰 BUKHARA REST</a>
-			<div class="nav-links">
-				<a href="index.html">Asosiy</a>
-				<a href="menu.html">Menyu</a>
-				<a href="booking.html">Bron Qilish</a>
-				<a href="about.html">Biz Haqimizda</a>
-				<a href="contact.html" class="active">Aloqa</a>
-				<a href="auth.html" class="btn-login"><i class="fas fa-user"></i> Kirish</a>
-				<a href="admin.html" class="btn-admin"><i class="fas fa-cog"></i> Admin</a>
-			</div>
-			<div class="hamburger">
-				<i class="fas fa-bars"></i>
-			</div>
-		</div>
-	</nav>
+    <!-- Contact Section -->
+    <section class="section">
+        <div class="container">
+            <div class="contact-page-container">
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h2 class="section-title">Xabar Yuborish</h2>
+                    
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contactName">Ismingiz *</label>
+                                <input type="text" id="contactName" placeholder="Ism familiyangiz" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactEmail">Email *</label>
+                                <input type="email" id="contactEmail" placeholder="email@example.com" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactPhone">Telefon Raqam (ixtiyoriy)</label>
+                            <input type="tel" id="contactPhone" placeholder="+998 XX XXX-XX-XX">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactSubject">Mavzu</label>
+                            <select id="contactSubject">
+                                <option value="">Tanlang</option>
+                                <option value="booking">Bron haqida</option>
+                                <option value="menu">Menyu haqida</option>
+                                <option value="feedback">Fikr-mulohaza</option>
+                                <option value="complaint">Shikoyat</option>
+                                <option value="suggestion">Taklif</option>
+                                <option value="other">Boshqa</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactMessage">Xabaringiz *</label>
+                            <textarea id="contactMessage" placeholder="Xabaringizni bu yerga yozing..." rows="5" required></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-paper-plane"></i> Xabar Yuborish
+                            </button>
+                            <button type="reset" class="btn-secondary">
+                                <i class="fas fa-redo"></i> Tozalash
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="contact-info-container">
+                    <h3><i class="fas fa-map-marker-alt"></i> Manzilimiz</h3>
+                    <p class="contact-address">
+                        Buxoro shahri, Markaziy ko'cha 123<br>
+                        Buxoro viloyati, O'zbekiston
+                    </p>
+                    
+                    <h3><i class="fas fa-clock"></i> Ish Vaqti</h3>
+                    <ul class="working-hours">
+                        <li><span>Dushanba - Juma:</span> 9:00 - 23:00</li>
+                        <li><span>Shanba:</span> 10:00 - 00:00</li>
+                        <li><span>Yakshanba:</span> 10:00 - 22:00</li>
+                    </ul>
+                    
+                    <h3><i class="fas fa-phone"></i> Telefon Raqamlar</h3>
+                    <div class="phone-numbers">
+                        <p><i class="fas fa-phone-alt"></i> +998 90 123 45 67</p>
+                        <p><i class="fas fa-phone-alt"></i> +998 71 234 56 78</p>
+                    </div>
+                    
+                    <h3><i class="fas fa-envelope"></i> Email Manzillar</h3>
+                    <div class="email-addresses">
+                        <p><i class="fas fa-envelope"></i> info@bukhararest.uz</p>
+                        <p><i class="fas fa-envelope"></i> booking@bukhararest.uz</p>
+                    </div>
+                    
+                    <h3><i class="fas fa-share-alt"></i> Ijtimoiy Tarmoqlar</h3>
+                    <div class="social-icons-large">
+                        <a href="#" class="social-icon facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon telegram">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="#" class="social-icon youtube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	<section class="section">
-		<div class="container">
-			<h1 class="section-title">Biz bilan bog'laning</h1>
-			<form id="contactForm" class="form">
-				<div class="form-group">
-					<label for="name">Ism</label>
-					<input type="text" id="name" name="name" required>
-				</div>
-				<div class="form-group">
-					<label for="email">Email</label>
-					<input type="email" id="email" name="email" required>
-				</div>
-				<div class="form-group">
-					<label for="message">Xabar</label>
-					<textarea id="message" name="message" rows="5" required></textarea>
-				</div>
-				<button type="submit" class="btn-primary">Yuborish</button>
-				<div id="contactMessage" class="form-message"></div>
-			</form>
-		</div>
-	</section>
+    <!-- Map Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Manzilimiz Xaritada</h2>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.902489239499!2d64.42877531541401!3d39.77484497931646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f50060e659c2b3b%3A0x4c2c3c3b3b3b3b3b!2sBuxoro%2C%20O%60zbekiston!5e0!3m2!1suz!2s!4v1629452333337!5m2!1suz!2s" 
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
 
-	<footer class="footer">
-		<div class="container">
-			<div class="footer-grid">
-				<div>
-					<h3>BUKHARA REST</h3>
-					<p>O'zbek milliy taomlarining eng yaxshi namunalari</p>
-				</div>
-				<div>
-					<h3>Foydali Havolalar</h3>
-					<a href="menu.html">Menyu</a>
-					<a href="booking.html">Bron Qilish</a>
-					<a href="about.html">Biz Haqimizda</a>
-				</div>
-				<div>
-					<h3>Ijtimoiy Tarmoqlar</h3>
-					<div class="social-icons">
-						<a href="#"><i class="fab fa-facebook"></i></a>
-						<a href="#"><i class="fab fa-instagram"></i></a>
-						<a href="#"><i class="fab fa-telegram"></i></a>
-					</div>
-				</div>
-			</div>
-			<p class="copyright">© 2024 BUKHARA REST. Barcha huquqlar himoyalangan.</p>
-		</div>
-	</footer>
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Ko'p Beriladigan Savollar</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h3 class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        Restoran qayerda joylashgan?
+                    </h3>
+                    <p class="faq-answer">
+                        Bizning restoran Buxoro shahri markazida, Markaziy ko'cha 123 manzilida joylashgan.
+                    </p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        Bron qilish uchun qancha vaqt oldin aytish kerak?
+                    </h3>
+                    <p class="faq-answer">
+                        Oddiy kunlari 2 soat oldin, bayram kunlari esa kamida 24 soat oldin bron qilishni tavsiya qilamiz.
+                    </p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        Katta guruhlar uchun maxsus takliflar bormi?
+                    </h3>
+                    <p class="faq-answer">
+                        Ha, 10 kishidan ortiq guruhlar uchun maxsus chegirmalar va xizmatlar taklif qilamiz.
+                    </p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        Restoranda to'lov qanday usullari mavjud?
+                    </h3>
+                    <p class="faq-answer">
+                        Naqd pul, bank kartalari (Uzcard, Humo, Visa, MasterCard) va mobil to'lov tizimlari qabul qilinadi.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js"></script>
-	<script src="config.js"></script>
-	<script src="app.js"></script>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>BUKHARA REST</h3>
+                    <p>O'zbek milliy taomlarining eng yaxshi namunalari</p>
+                </div>
+                <div>
+                    <h3>Foydali Havolalar</h3>
+                    <a href="menu.html">Menyu</a>
+                    <a href="booking.html">Bron Qilish</a>
+                    <a href="about.html">Biz Haqimizda</a>
+                </div>
+                <div>
+                    <h3>Ijtimoiy Tarmoqlar</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <p class="copyright">© 2024 BUKHARA REST. Barcha huquqlar himoyalangan.</p>
+        </div>
+    </footer>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js"></script>
+    <script src="config.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>

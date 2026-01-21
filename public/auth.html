@@ -3,166 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kirish - BUKHARA REST</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">🏰 BUKHARA REST</a>
-            <div class="nav-links">
-                <a href="index.html">Asosiy</a>
-                <a href="menu.html">Menyu</a>
-                <a href="booking.html">Bron Qilish</a>
-                <a href="about.html">Biz Haqimizda</a>
-                <a href="contact.html">Aloqa</a>
-                <a href="auth.html" class="btn-login active"><i class="fas fa-user"></i> Kirish</a>
-                <a href="admin.html" class="btn-admin"><i class="fas fa-cog"></i> Admin</a>
-            </div>
-            <div class="hamburger">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
-
-    <section class="section">
-        <div class="container">
-            <h1 class="section-title">Kirish / Ro'yxatdan o'tish</h1>
-            <form id="authForm" class="form">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Parol</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit" class="btn-primary">Kirish</button>
-                <button type="button" id="registerBtn" class="btn-secondary">Ro'yxatdan o'tish</button>
-                <div id="authMessage" class="form-message"></div>
-            </form>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h3>BUKHARA REST</h3>
-                    <p>O'zbek milliy taomlarining eng yaxshi namunalari</p>
-                </div>
-                <div>
-                    <h3>Foydali Havolalar</h3>
-                    <a href="menu.html">Menyu</a>
-                    <a href="booking.html">Bron Qilish</a>
-                    <a href="about.html">Biz Haqimizda</a>
-                </div>
-                <div>
-                    <h3>Ijtimoiy Tarmoqlar</h3>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-telegram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <p class="copyright">© 2024 BUKHARA REST. Barcha huquqlar himoyalangan.</p>
-        </div>
-    </footer>
-
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js"></script>
-    <script src="config.js"></script>
-    <script src="app.js"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="uz">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kirish - BUKHARA REST</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">🏰 BUKHARA REST</a>
-            <div class="nav-links">
-                <a href="index.html">Asosiy</a>
-                <a href="menu.html">Menyu</a>
-                <a href="booking.html">Bron Qilish</a>
-                <a href="about.html">Biz Haqimizda</a>
-                <a href="contact.html">Aloqa</a>
-                <a href="auth.html" class="btn-login active"><i class="fas fa-user"></i> Kirish</a>
-                <a href="admin.html" class="btn-admin"><i class="fas fa-cog"></i> Admin</a>
-            </div>
-            <div class="hamburger">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
-
-    <section class="section">
-        <div class="container">
-            <h1 class="section-title">Kirish / Ro'yxatdan o'tish</h1>
-            <form id="authForm" class="form">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Parol</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit" class="btn-primary">Kirish</button>
-                <button type="button" id="registerBtn" class="btn-secondary">Ro'yxatdan o'tish</button>
-                <div id="authMessage" class="form-message"></div>
-            </form>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h3>BUKHARA REST</h3>
-                    <p>O'zbek milliy taomlarining eng yaxshi namunalari</p>
-                </div>
-                <div>
-                    <h3>Foydali Havolalar</h3>
-                    <a href="menu.html">Menyu</a>
-                    <a href="booking.html">Bron Qilish</a>
-                    <a href="about.html">Biz Haqimizda</a>
-                </div>
-                <div>
-                    <h3>Ijtimoiy Tarmoqlar</h3>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-telegram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <p class="copyright">© 2024 BUKHARA REST. Barcha huquqlar himoyalangan.</p>
-        </div>
-    </footer>
-
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js"></script>
-    <script src="config.js"></script>
-    <script src="app.js"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="uz">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kirish va Ro'yxatdan O'tish - BUKHARA REST</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -219,10 +59,344 @@
         .auth-tab:hover {
             background: #f8f9fa;
         }
+
+        .auth-tab.active {
+            color: var(--primary);
+        }
+
+        .auth-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .auth-content {
+            padding: 30px;
+            display: none;
+        }
+
+        .auth-content.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 5px rgba(212, 165, 116, 0.3);
+        }
+
+        .btn-block {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-block:hover {
+            background: #c4924a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 165, 116, 0.3);
+        }
+
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #999;
+        }
+
+        .auth-divider::before,
+        .auth-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #ddd;
+        }
+
+        .auth-divider span {
+            padding: 0 10px;
+            font-size: 14px;
+        }
+
+        .social-login-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .social-login-btn:hover {
+            background: #f8f9fa;
+            border-color: var(--primary);
+        }
+
+        .phone-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .phone-modal.active {
+            display: flex;
+        }
+
+        .phone-modal-content {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        .phone-modal-message {
+            text-align: center;
+            margin: 15px 0;
+            color: #28a745;
+            display: none;
+        }
+
+        #verificationCodeInput {
+            display: none;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-center a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .text-center a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .back-link:hover {
+            color: #c4924a;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- ...auth page content... -->
-</body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="auth-header">
+                <h1>🏰 BUKHARA REST</h1>
+                <p>Foydalanuvchi Akkaunt</p>
+            </div>
+
+            <!-- Tabs -->
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="loginTab" onclick="switchTab('login')">
+                    <i class="fas fa-sign-in-alt"></i> Kirish
+                </button>
+                <button class="auth-tab" id="registerTab" onclick="switchTab('register')">
+                    <i class="fas fa-user-plus"></i> Ro'yxatdan O'tish
+                </button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="loginForm" class="auth-content active">
+                <form id="emailLoginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">
+                            <i class="fas fa-envelope"></i> Email
+                        </label>
+                        <input type="email" id="loginEmail" placeholder="email@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loginPassword">
+                            <i class="fas fa-lock"></i> Parol
+                        </label>
+                        <input type="password" id="loginPassword" placeholder="Parol" required>
+                    </div>
+
+                    <button type="submit" class="btn-block">
+                        <i class="fas fa-sign-in-alt"></i> Kirish
+                    </button>
+                </form>
+
+                <div class="auth-divider">
+                    <span>yoki</span>
+                </div>
+
+                <!-- Social Login -->
+                <button class="social-login-btn" id="googleLoginBtn">
+                    <i class="fab fa-google"></i> Google orqali
+                </button>
+
+                <button class="social-login-btn" id="phoneLoginBtn">
+                    <i class="fas fa-phone"></i> Telefon orqali
+                </button>
+
+                <p class="text-center" style="margin-top: 20px; font-size: 14px;">
+                    Akauntingiz yo'qmi? <a href="#" onclick="switchTab('register'); return false;">Ro'yxatdan o'ting</a>
+                </p>
+            </div>
+
+            <!-- Register Form -->
+            <div id="registerForm" class="auth-content">
+                <form id="emailRegisterForm">
+                    <div class="form-group">
+                        <label for="registerName">
+                            <i class="fas fa-user"></i> Ism Familiya
+                        </label>
+                        <input type="text" id="registerName" placeholder="Ism Familiya" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registerEmail">
+                            <i class="fas fa-envelope"></i> Email
+                        </label>
+                        <input type="email" id="registerEmail" placeholder="email@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registerPhone">
+                            <i class="fas fa-phone"></i> Telefon Raqam
+                        </label>
+                        <input type="tel" id="registerPhone" placeholder="+998 XX XXX-XX-XX" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registerPassword">
+                            <i class="fas fa-lock"></i> Parol
+                        </label>
+                        <input type="password" id="registerPassword" placeholder="Parol (min. 6 ta belgisi)" required>
+                    </div>
+
+                    <button type="submit" class="btn-block">
+                        <i class="fas fa-user-plus"></i> Ro'yxatdan O'tish
+                    </button>
+                </form>
+
+                <p class="text-center" style="margin-top: 20px; font-size: 14px;">
+                    Allaqachon akauntingiz bor? <a href="#" onclick="switchTab('login'); return false;">Kiring</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Phone Login Modal -->
+    <div id="phoneModal" class="phone-modal">
+        <div class="phone-modal-content">
+            <span class="close" onclick="closePhoneModal()">&times;</span>
+            <h3 style="text-align: center; margin-bottom: 20px;">
+                <i class="fas fa-phone"></i> Telefon orqali kirish
+            </h3>
+
+            <div class="form-group">
+                <label for="phoneInput">Telefon Raqam</label>
+                <input type="tel" id="phoneInput" placeholder="+998 XX XXX-XX-XX">
+            </div>
+
+            <div id="recaptcha-container" style="margin-bottom: 20px;"></div>
+
+            <div class="form-group" id="verificationCodeInput">
+                <label for="verificationCode">Tasdiqlash Kodi</label>
+                <input type="text" id="verificationCode" placeholder="Kodni kiriting">
+            </div>
+
+            <p class="phone-modal-message"></p>
+
+            <button class="btn-block" id="phoneSubmitBtn" onclick="handlePhoneLogin()">
+                Kodni Yuborish
+            </button>
+        </div>
+    </div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="config.js"></script>
     <script src="auth.js"></script>
+</body>
 </html>

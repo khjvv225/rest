@@ -1,151 +1,101 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>BUKHARA REST - O'zbek Taomlari Restorani</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUKHARA REST - O'zbek Taomlari Restorani</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-	<nav class="navbar">
-		<div class="container">
-			<a href="index.html" class="logo">🏰 BUKHARA REST</a>
-			<div class="nav-links">
-				<a href="index.html">Asosiy</a>
-				<a href="menu.html">Menyu</a>
-				<a href="booking.html">Bron Qilish</a>
-				<a href="about.html">Biz Haqimizda</a>
-				<a href="contact.html">Aloqa</a>
-				<a href="auth.html" class="btn-login"><i class="fas fa-user"></i> Kirish</a>
-				<a href="admin.html" class="btn-admin"><i class="fas fa-cog"></i> Admin</a>
-			</div>
-			<div class="hamburger">
-				<i class="fas fa-bars"></i>
-			</div>
-		</div>
-	</nav>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">🏰 BUKHARA REST</a>
+            <div class="nav-links">
+                <a href="index.html">Asosiy</a>
+                <a href="menu.html">Menyu</a>
+                <a href="booking.html">Bron Qilish</a>
+                <a href="about.html">Biz Haqimizda</a>
+                <a href="contact.html">Aloqa</a>
+                <a href="auth.html" class="btn-login"><i class="fas fa-user"></i> Kirish</a>
+                <a href="admin.html" class="btn-admin"><i class="fas fa-cog"></i> Admin</a>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
 
-	<section class="hero">
-		<div class="container">
-			<h1>O'zbek Milliy Taomlari</h1>
-			<p>An'anaviy ta'm - Zamonaviy uslub</p>
-			<a href="booking.html" class="btn-primary">Stol Bron Qilish</a>
-		</div>
-	</section>
+    <section class="hero">
+        <div class="container">
+            <h1>O'zbek Milliy Taomlari</h1>
+            <p>An'anaviy ta'm - Zamonaviy uslub</p>
+            <a href="booking.html" class="btn-primary">Stol Bron Qilish</a>
+        </div>
+    </section>
 
-	<section class="section">
-		<div class="container">
-			<h2 class="section-title">Menyu</h2>
-			<div class="menu-grid" id="menuGrid"></div>
-			<div class="text-center">
-				<a href="menu.html" class="btn-secondary">Barcha Taomlar</a>
-			</div>
-		</div>
-	</section>
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Menyu</h2>
+            <div class="menu-grid" id="menuGrid"></div>
+            <div class="text-center">
+                <a href="menu.html" class="btn-secondary">Barcha Taomlar</a>
+            </div>
+        </div>
+    </section>
 
-	<section class="section bg-light">
-		<div class="container">
-			<div class="contact-grid">
-				<div class="contact-item">
-					<i class="fas fa-map-marker-alt"></i>
-					<h3>Manzil</h3>
-					<p>Buxoro shahri, Markaziy ko'cha 123</p>
-				</div>
-				<div class="contact-item">
-					<i class="fas fa-phone"></i>
-					<h3>Telefon</h3>
-					<p>+998 90 123 45 67</p>
-				</div>
-				<div class="contact-item">
-					<i class="fas fa-clock"></i>
-					<h3>Ish Vaqti</h3>
-					<p>Har kuni 9:00 - 23:00</p>
-				</div>
-			</div>
-		</div>
-	</section>
+    <section class="section bg-light">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Manzil</h3>
+                    <p>Buxoro shahri, Markaziy ko'cha 123</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <h3>Telefon</h3>
+                    <p>+998 90 123 45 67</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <h3>Ish Vaqti</h3>
+                    <p>Har kuni 9:00 - 23:00</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	<footer class="footer">
-		<div class="container">
-			<div class="footer-grid">
-				<div>
-					<h3>BUKHARA REST</h3>
-					<p>O'zbek milliy taomlarining eng yaxshi namunalari</p>
-				</div>
-				<div>
-					<h3>Foydali Havolalar</h3>
-					<a href="menu.html">Menyu</a>
-					<a href="booking.html">Bron Qilish</a>
-					<a href="about.html">Biz Haqimizda</a>
-				</div>
-				<div>
-					<h3>Ijtimoiy Tarmoqlar</h3>
-					<div class="social-icons">
-						<a href="#"><i class="fab fa-facebook"></i></a>
-						<a href="#"><i class="fab fa-instagram"></i></a>
-						<a href="#"><i class="fab fa-telegram"></i></a>
-					</div>
-				</div>
-			</div>
-			<p class="copyright">© 2024 BUKHARA REST. Barcha huquqlar himoyalangan.</p>
-		</div>
-	</footer>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>BUKHARA REST</h3>
+                    <p>O'zbek milliy taomlarining eng yaxshi namunalari</p>
+                </div>
+                <div>
+                    <h3>Foydali Havolalar</h3>
+                    <a href="menu.html">Menyu</a>
+                    <a href="booking.html">Bron Qilish</a>
+                    <a href="about.html">Biz Haqimizda</a>
+                </div>
+                <div>
+                    <h3>Ijtimoiy Tarmoqlar</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <p class="copyright">© 2024 BUKHARA REST. Barcha huquqlar himoyalangan.</p>
+        </div>
+    </footer>
 
-	<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js"></script>
-	<script src="config.js"></script>
-	<script src="app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js"></script>
+    <script src="config.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="uz">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>BUKHARA REST - O'zbek Taomlari Restorani</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-	<link rel="stylesheet" href="styles.css">
-</head>
-<body>
-	<nav class="navbar">
-		<div class="container">
-			<a href="index.html" class="logo">🏰 BUKHARA REST</a>
-			<div class="nav-links">
-				<a href="index.html">Asosiy</a>
-				<a href="menu.html">Menyu</a>
-				<a href="booking.html">Bron Qilish</a>
-				<a href="about.html">Biz Haqimizda</a>
-				<a href="contact.html">Aloqa</a>
-				<a href="auth.html" class="btn-login"><i class="fas fa-user"></i> Kirish</a>
-				<a href="admin.html" class="btn-admin"><i class="fas fa-cog"></i> Admin</a>
-			</div>
-			<div class="hamburger">
-				<i class="fas fa-bars"></i>
-			</div>
-		</div>
-					<meta charset="UTF-8">
-					<meta name="viewport" content="width=device-width, initial-scale=1.0">
-					<title>BUKHARA REST - O'zbek Taomlari Restorani</title>
-					<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-					<link rel="stylesheet" href="styles.css">
-
-	<section class="hero">
-					<nav class="navbar">
-						<div class="container">
-							<a href="index.html" class="logo">🏰 BUKHARA REST</a>
-							<div class="nav-links">
-								<a href="index.html">Asosiy</a>
-								<a href="menu.html">Menyu</a>
-								<a href="booking.html">Bron Qilish</a>
-								<a href="about.html">Biz Haqimizda</a>
-								<a href="contact.html">Aloqa</a>
-								<a href="auth.html" class="btn-login"><i class="fas fa-user"></i> Kirish</a>
-								<a href="admin.html" class="btn-admin"><i class="fas fa-cog"></i> Admin</a>
-							</div>
-							<div class="hamburger">
-								<i class="fas fa-bars"></i>
-							</div>
-						</div>
-					</nav>
