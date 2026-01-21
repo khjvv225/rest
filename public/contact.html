@@ -10,17 +10,20 @@
 <body>
     <nav class="navbar">
         <div class="container">
-            <a href="index.html" class="logo">🏰 BUKHARA REST</a>
-            <div class="nav-links">
-                <a href="index.html">Asosiy</a>
-                <a href="menu.html">Menyu</a>
-                <a href="booking.html">Bron Qilish</a>
-                <a href="about.html">Biz Haqimizda</a>
-                <a href="contact.html" class="active">Aloqa</a>
+            <a href="index.html" class="logo premium-logo">
+                <img src="https://cdn-icons-png.flaticon.com/512/3176/3176296.png" alt="Bukhara Rest Logo" class="logo-img" />
+                <span class="logo-text">BUKHARA REST</span>
+            </a>
+            <div class="nav-links premium-nav">
+                <a href="index.html"><i class="fas fa-home"></i> Asosiy</a>
+                <a href="menu.html"><i class="fas fa-utensils"></i> Menyu</a>
+                <a href="booking.html"><i class="fas fa-calendar-check"></i> Bron Qilish</a>
+                <a href="about.html"><i class="fas fa-info-circle"></i> Biz Haqimizda</a>
+                <a href="contact.html" class="active"><i class="fas fa-phone-alt"></i> Aloqa</a>
                 <a href="auth.html" class="btn-login"><i class="fas fa-user"></i> Kirish</a>
                 <a href="admin.html" class="btn-admin"><i class="fas fa-cog"></i> Admin</a>
             </div>
-            <div class="hamburger">
+            <div class="hamburger premium-hamburger">
                 <i class="fas fa-bars"></i>
             </div>
         </div>
@@ -35,47 +38,56 @@
         <div class="container">
             <div class="contact-page-container">
                 <div class="contact-form-container">
-                    <h2 class="section-title">Xabar Yuborish</h2>
-                    <form id="contactForm" class="contact-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="contactName">Ismingiz *</label>
-                                <input type="text" id="contactName" placeholder="Ism familiyangiz" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="contactEmail">Email *</label>
-                                <input type="email" id="contactEmail" placeholder="email@example.com" required>
-                            </div>
+                    <div class="hero-content">
+                        <h2 class="hero-title">Aloqa</h2>
+                        <p class="hero-desc">Biz bilan bog'laning yoki manzilimizga tashrif buyuring!</p>
+                    </div>
+                    <div class="hero-img">
+                        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80" alt="Contact Uzbek Food" />
+                    </div>
+                </div>
+            </section>
+            <!-- Premium Features Section -->
+            <section class="section premium-features">
+                <div class="container">
+                    <h2 class="section-title">Bizning Ma'lumotlar</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-map-marker-alt feature-icon"></i>
+                            <h3>Manzil</h3>
+                            <p>Buxoro shahri, Markaziy ko'cha 123</p>
                         </div>
-                        <div class="form-group">
-                            <label for="contactPhone">Telefon Raqam (ixtiyoriy)</label>
-                            <input type="tel" id="contactPhone" placeholder="+998 XX XXX-XX-XX">
+                        <div class="feature-card">
+                            <i class="fas fa-phone feature-icon"></i>
+                            <h3>Telefon</h3>
+                            <p>+998 90 123 45 67</p>
                         </div>
-                        <div class="form-group">
-                            <label for="contactSubject">Mavzu</label>
-                            <select id="contactSubject">
-                                <option value="">Tanlang</option>
-                                <option value="booking">Bron haqida</option>
-                                <option value="menu">Menyu haqida</option>
-                                <option value="feedback">Fikr-mulohaza</option>
-                                <option value="complaint">Shikoyat</option>
-                                <option value="suggestion">Taklif</option>
-                                <option value="other">Boshqa</option>
-                            </select>
+                        <div class="feature-card">
+                            <i class="fas fa-clock feature-icon"></i>
+                            <h3>Ish Vaqti</h3>
+                            <p>Har kuni 9:00 - 23:00</p>
                         </div>
-                        <div class="form-group">
-                            <label for="contactMessage">Xabaringiz *</label>
-                            <textarea id="contactMessage" placeholder="Xabaringizni bu yerga yozing..." rows="5" required></textarea>
+                    </div>
+                </div>
+            </section>
+            <!-- Testimonials Section -->
+            <section class="section premium-testimonials">
+                <div class="container">
+                    <h2 class="section-title">Mijozlar Fikri</h2>
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card">
+                            <div class="testimonial-quote">“</div>
+                            <p>Tez va samimiy javob oldim. Xizmat darajasi yuqori!</p>
+                            <div class="testimonial-author">— Zafar, Buxoro</div>
                         </div>
-                        <div class="form-actions">
-                            <button type="submit" class="btn-primary">
-                                <i class="fas fa-paper-plane"></i> Xabar Yuborish
-                            </button>
-                            <button type="reset" class="btn-secondary">
-                                <i class="fas fa-redo"></i> Tozalash
-                            </button>
+                        <div class="testimonial-card">
+                            <div class="testimonial-quote">“</div>
+                            <p>Telefon orqali ham, joyida ham muammo yo'q. Tavsiya qilaman!</p>
+                            <div class="testimonial-author">— Malika, Toshkent</div>
                         </div>
-                    </form>
+                    </div>
+                </div>
+            </section>
                 </div>
                 <div class="contact-info-container">
                     <h3><i class="fas fa-map-marker-alt"></i> Manzilimiz</h3>

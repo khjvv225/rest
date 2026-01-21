@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Luxury Restaurant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body.admin {
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+        .admin-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 4rem;
+            background: rgba(30,30,30,0.95);
+            border-bottom: 1px solid #444;
+        }
+        .admin-navbar .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #ffd700;
+        }
+        .admin-navbar nav a {
+            color: #fff;
+            margin-left: 2rem;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .admin-navbar nav a.active, .admin-navbar nav a:hover {
+            color: #ffd700;
+        }
+        .admin-dashboard {
+            max-width: 1200px;
+            margin: 3rem auto;
+            background: rgba(40,40,40,0.98);
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+            padding: 2.5rem 3rem;
+        }
+        .admin-dashboard h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #ffd700;
+        }
+        .admin-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .admin-section {
+            background: #232526;
+            border-radius: 1rem;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+            min-height: 320px;
+        }
+        .admin-section h2 {
+            font-size: 1.4rem;
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+        .admin-section .icon {
+            font-size: 2.5rem;
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+        .admin-section .section-content {
+            color: #eee;
+            font-size: 1.05rem;
+        }
+        @media (max-width: 700px) {
+            .admin-navbar { flex-direction: column; padding: 1.2rem 1rem; }
+            .admin-dashboard { padding: 1.2rem 0.5rem; }
+        }
+    </style>
+</head>
+<body class="admin">
+    <div class="admin-navbar">
+        <div class="logo"><i class="fas fa-crown"></i> Admin Panel</div>
+        <nav>
+            <a href="#dashboard" class="active">Dashboard</a>
+            <a href="#crud">CRUD</a>
+            <a href="#ai">AI</a>
+            <a href="#editor">Editor</a>
+            <a href="index.html">View Site</a>
+        </nav>
+    </div>
+    <div class="admin-dashboard">
+        <h1>Welcome, Admin</h1>
+        <div class="admin-sections">
+            <div class="admin-section" id="crud">
+                <div class="icon"><i class="fas fa-database"></i></div>
+                <h2>Full CRUD Management</h2>
+                <div class="section-content">
+                    <p>Manage menu, bookings, users, and more. Add, edit, or delete any content in real time.</p>
+                    <button class="lux-btn" onclick="openCrudPanel()">Open CRUD Panel</button>
+                </div>
+            </div>
+            <div class="admin-section" id="ai">
+                <div class="icon"><i class="fas fa-robot"></i></div>
+                <h2>AI Integration</h2>
+                <div class="section-content">
+                    <p>Use DeepSeek/OpenAI to generate content, analyze data, and automate tasks directly from the panel.</p>
+                    <button class="lux-btn" onclick="openAIPanel()">Open AI Tools</button>
+                </div>
+            </div>
+    <!-- DeepSeek AI Modal -->
+    <div id="aiModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeAIPanel()">&times;</span>
+            <h2 style="color:#ffd700;">DeepSeek AI</h2>
+            <textarea id="ai-prompt" placeholder="Savol yoki so‘rovni kiriting..." style="width:100%;height:80px;margin-bottom:1rem;padding:0.7rem;border-radius:0.5rem;border:1px solid #444;background:#333;color:#fff;"></textarea>
+            <button class="lux-btn" onclick="sendDeepSeek()">Yuborish</button>
+            <div id="ai-result" style="margin-top:1.5rem;color:#ffd700;font-size:1.1rem;"></div>
+            <div id="ai-error" style="color:#ff4c4c;margin-top:1rem;display:none;"></div>
+        </div>
+    </div>
+            <div class="admin-section" id="editor">
+                <div class="icon"><i class="fas fa-code"></i></div>
+                <h2>Code & Content Editor</h2>
+                <div class="section-content">
+                    <p>Edit site code, HTML, CSS, and content live. Instantly update your site from the admin panel.</p>
+                    <button class="lux-btn" onclick="openEditorPanel()">Open Editor</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Admin Login Modal -->
+    <div id="adminLoginModal" class="modal" style="display:flex;">
+        <div class="modal-content">
+            <h2 style="color:#ffd700;">Admin Login</h2>
+            <div style="margin-bottom:1.2rem;">
+                <input type="text" id="admin-username" placeholder="Username" style="width:90%;margin-bottom:1rem;padding:0.7rem;border-radius:0.5rem;border:1px solid #444;background:#333;color:#fff;">
+                <input type="password" id="admin-password" placeholder="Password" style="width:90%;margin-bottom:1rem;padding:0.7rem;border-radius:0.5rem;border:1px solid #444;background:#333;color:#fff;">
+            </div>
+            <button class="lux-btn" onclick="adminLogin()">Login</button>
+            <div id="admin-login-error" style="color:#ff4c4c;margin-top:1rem;display:none;"></div>
+        </div>
+    </div>
+    <!-- CRUD Modal -->
+    <div id="crudModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeCrudPanel()">&times;</span>
+            <h2 style="color:#ffd700;">CRUD Management</h2>
+            <div class="crud-tabs">
+                <button onclick="showCrudTab('menu')" id="tab-menu" class="crud-tab active">Menu</button>
+                <button onclick="showCrudTab('bookings')" id="tab-bookings" class="crud-tab">Bookings</button>
+                <button onclick="showCrudTab('users')" id="tab-users" class="crud-tab">Users</button>
+            </div>
+            <div id="crud-menu" class="crud-panel">
+                <h3>Menu Items</h3>
+                <div id="menu-list"></div>
+                <button class="lux-btn" onclick="showAddMenuForm()">Add Menu Item</button>
+                <div id="add-menu-form" style="display:none;">
+                    <input type="text" id="menu-name" placeholder="Name">
+                    <input type="text" id="menu-price" placeholder="Price">
+                    <input type="text" id="menu-category" placeholder="Category">
+                    <button class="lux-btn" onclick="addMenuItem()">Add</button>
+                </div>
+            </div>
+            <div id="crud-bookings" class="crud-panel" style="display:none;">
+                <h3>Bookings</h3>
+                <div id="bookings-list"></div>
+            </div>
+            <div id="crud-users" class="crud-panel" style="display:none;">
+                <h3>Users</h3>
+                <div id="users-list"></div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .modal { position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; }
+        .modal-content { background: #232526; padding: 2rem; border-radius: 1rem; width: 90%; max-width: 600px; box-shadow: 0 4px 24px rgba(0,0,0,0.3); position: relative; }
+        .close { position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; color: #ffd700; cursor: pointer; }
+        .crud-tabs { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+        .crud-tab { background: #414345; color: #ffd700; border: none; padding: 0.7rem 1.5rem; border-radius: 0.7rem; font-size: 1rem; cursor: pointer; transition: background 0.2s; }
+        .crud-tab.active, .crud-tab:hover { background: #ffd700; color: #232526; }
+        .crud-panel { margin-bottom: 1.5rem; }
+        #add-menu-form input { margin: 0.5rem 0.5rem 0.5rem 0; padding: 0.5rem; border-radius: 0.5rem; border: 1px solid #444; background: #333; color: #fff; }
+        #add-menu-form button { margin-top: 0.5rem; }
+    </style>
+    <script src="admin.js"></script>
+</body>
+</html>

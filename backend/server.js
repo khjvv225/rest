@@ -14,6 +14,7 @@ const bookingRoutes = require('./routes/booking.routes');
 const menuRoutes = require('./routes/menu.routes');
 const publicRoutes = require('./routes/public.routes');
 const settingsRoutes = require('./routes/settings.routes');
+const deepseekRoutes = require('./routes/deepseek.routes');
 
 // Import middleware
 const { errorHandler } = require('./middleware/error.middleware');
@@ -58,6 +59,14 @@ mongoose.connect(process.env.MONGODB_URI, {
   console.error('❌ MongoDB connection error:', err);
   process.exit(1);
 });
+// API routes
+app.use('/api/auth', authRoutes);
+app.use('/api/admins', adminRoutes);
+app.use('/api/bookings', bookingRoutes);
+app.use('/api/menu', menuRoutes);
+app.use('/api/public', publicRoutes);
+app.use('/api/settings', settingsRoutes);
+app.use('/api/deepseek', deepseekRoutes);
 
 // Routes
 app.use('/api/auth', authRoutes);

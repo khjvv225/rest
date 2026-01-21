@@ -58,26 +58,34 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">🏰 BUKHARA REST</a>
-            <div class="nav-links">
-                <a href="index.html">Asosiy</a>
-                <a href="menu.html" class="active">Menyu</a>
-                <a href="booking.html">Bron Qilish</a>
-                <a href="about.html">Biz Haqimizda</a>
-                <a href="contact.html">Aloqa</a>
+        <div class="container premium-header">
+            <a href="index.html" class="logo premium-logo">
+                <img src="https://cdn-icons-png.flaticon.com/512/3176/3176296.png" alt="Bukhara Rest Logo" class="logo-img" />
+                <span class="logo-text">BUKHARA REST</span>
+            </a>
+            <div class="nav-links premium-nav">
+                <a href="index.html"><i class="fas fa-home"></i> Asosiy</a>
+                <a href="menu.html" class="active"><i class="fas fa-utensils"></i> Menyu</a>
+                <a href="booking.html"><i class="fas fa-calendar-check"></i> Bron Qilish</a>
+                <a href="about.html"><i class="fas fa-info-circle"></i> Biz Haqimizda</a>
+                <a href="contact.html"><i class="fas fa-phone-alt"></i> Aloqa</a>
                 <a href="auth.html" class="btn-login"><i class="fas fa-user"></i> Kirish</a>
                 <a href="admin.html" class="btn-admin"><i class="fas fa-cog"></i> Admin</a>
             </div>
-            <div class="hamburger">
+            <div class="hamburger premium-hamburger">
                 <i class="fas fa-bars"></i>
             </div>
         </div>
     </nav>
-    <section class="menu-hero">
+    <section class="menu-hero premium-hero">
         <div class="container">
-            <h1>Bizning Menyu</h1>
-            <p>An'anaviy va zamonaviy o'zbek taomlari</p>
+            <div class="hero-content">
+                <h1 class="hero-title">Bizning Menyu</h1>
+                <p class="hero-desc">An'anaviy va zamonaviy o'zbek taomlari, premium taqdimotda!</p>
+            </div>
+            <div class="hero-img">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80" alt="Menu Uzbek Food" />
+            </div>
         </div>
     </section>
     <section class="section">
@@ -92,28 +100,43 @@
             <div class="menu-grid" id="menuGrid"></div>
         </div>
     </section>
-    <section class="section bg-light">
+    <!-- Premium Features Section -->
+    <section class="section premium-features">
         <div class="container">
             <h2 class="section-title">Maxsus Takliflar</h2>
-            <div class="offers-grid">
-                <div class="offer-card">
-                    <div class="offer-badge">20% Chegirma</div>
-                    <h3>Oilaviy Kechki Ovqat</h3>
-                    <p>4 kishilik oilaviy kechki ovqat to'plami</p>
-                    <p class="offer-price">120,000 so'm</p>
-                    <p><del>150,000 so'm</del></p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-percentage feature-icon"></i>
+                    <h3>20% Chegirma</h3>
+                    <p>Oilaviy kechki ovqat to'plamiga maxsus chegirma.</p>
                 </div>
-                <div class="offer-card">
-                    <div class="offer-badge">Yangi</div>
+                <div class="feature-card">
+                    <i class="fas fa-briefcase feature-icon"></i>
                     <h3>Biznes Lansh</h3>
-                    <p>Biznes hamkorlaringiz uchun maxsus lansh</p>
-                    <p class="offer-price">80,000 so'm/kishi</p>
+                    <p>Biznes hamkorlaringiz uchun maxsus lansh va xizmat.</p>
                 </div>
-                <div class="offer-card">
-                    <div class="offer-badge">Maxsus</div>
+                <div class="feature-card">
+                    <i class="fas fa-birthday-cake feature-icon"></i>
                     <h3>Tug'ilgan Kunlar</h3>
-                    <p>Tug'ilgan kuningizni bizda nishonlang</p>
-                    <p class="offer-price">50,000 so'mdan</p>
+                    <p>Tug'ilgan kuningizni bizda nishonlang, sovg'alar va bonuslar!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Section -->
+    <section class="section premium-testimonials">
+        <div class="container">
+            <h2 class="section-title">Mijozlar Fikri</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">“</div>
+                    <p>Taomlar juda mazali va xizmat darajasi yuqori. Menyudan har doim mamnunman!</p>
+                    <div class="testimonial-author">— Shaxnoza, Buxoro</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">“</div>
+                    <p>Maxsus takliflar va chegirmalar juda yoqdi. Doimiy mijozman!</p>
+                    <div class="testimonial-author">— Ulug'bek, Toshkent</div>
                 </div>
             </div>
         </div>

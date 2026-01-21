@@ -43,6 +43,13 @@ function filterMenu(category) {
 
 document.addEventListener('DOMContentLoaded', function() {
     loadMenu();
+    // Premium scroll effect for landing
+    const scrollDown = document.querySelector('.scroll-down');
+    if (scrollDown) {
+        scrollDown.addEventListener('click', function() {
+            window.scrollTo({top: document.querySelector('.section').offsetTop, behavior: 'smooth'});
+        });
+    }
     // Firebase Phone Auth & Registration
     const registerForm = document.getElementById('registerForm');
     if (registerForm) {
@@ -52,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 // reCAPTCHA solved
             }
         });
-
         registerForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             const name = document.getElementById('regName').value;
@@ -60,7 +66,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const email = document.getElementById('regEmail').value;
             const password = document.getElementById('regPassword').value;
             const registerMessage = document.getElementById('registerMessage');
-
             // Firebase phone verification
             try {
                 const confirmationResult = await firebase.auth().signInWithPhoneNumber(phone, window.recaptchaVerifier);
